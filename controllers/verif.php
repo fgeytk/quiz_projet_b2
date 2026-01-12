@@ -9,7 +9,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     if (isset($_GET['pseudo']) && isset($_GET['id_joueur']) && isset($_GET['categorie'])) {
         $pseudo = $_GET['pseudo'];
         $id_joueur = $_GET['id_joueur'];
-        $categorie = $_GET['categorie'];
+        // Vérifie que la catégorie n'est pas un tableau erreur timeout
+        $categorie = is_array($_GET['categorie']) ? '' : $_GET['categorie'];
     }
     
     // Sélectionne la bonne réponse et le nombre de points de la question
