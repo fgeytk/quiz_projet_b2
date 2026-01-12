@@ -1,4 +1,27 @@
-# Quiz PHP - Application Dockerisée
+# Quiz PHP - Application Dockerisée (Architecture MVC)
+
+## Structure du projet
+
+```
+quiz_projet_b2/
+├── models/           # Modèles (connexion base de données)
+│   └── db.php
+├── views/            # Vues (pages HTML/PHP)
+│   ├── index.php
+│   ├── question.php
+│   └── leaderboard.php
+├── controllers/      # Contrôleurs (logique métier)
+│   ├── connexion.php
+│   └── verif.php
+├── public/           # Assets publics (CSS, images)
+│   ├── style.css
+│   └── logo.png
+├── index.php         # Point d'entrée (redirige vers views/index.php)
+├── docker-compose.yml
+├── Dockerfile
+├── quiz (5).sql
+└── README.md
+```
 
 ## Prérequis
 - Docker Desktop installé et démarré

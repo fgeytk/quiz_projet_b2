@@ -1,5 +1,5 @@
 <?php
-include 'db.php';
+include '../models/db.php';
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $pseudo = $_POST['pseudo'];
@@ -33,7 +33,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     }
     
     // Construire l'URL de redirection
-    $redirect_url = 'question.php?pseudo=' . urlencode($pseudo) . '&id_joueur=' . urlencode($id_joueur);
+    $redirect_url = '../views/question.php?pseudo=' . urlencode($pseudo) . '&id_joueur=' . urlencode($id_joueur);
     
     // Ajouter la catégorie à l'URL si elle existe
     if (!empty($categorie)) {

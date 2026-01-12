@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="../public/style.css">
     <title>Leaderboard</title>
 </head>
 <body>
@@ -20,7 +20,7 @@
             </thead>
             <tbody>
                 <?php
-                include 'db.php';
+                include '../models/db.php';
 
                 //fetch dasns l'ordre du score
                 $sql = "SELECT pseudo, score FROM joueur ORDER BY score DESC, pseudo ASC";

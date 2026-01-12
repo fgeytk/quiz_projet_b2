@@ -3,12 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="../public/style.css">
     <title>Quiz</title>
 </head>
 <body>
 <?php
-    include 'db.php';
+    include '../models/db.php';
     $sql_cat = "SELECT DISTINCT categorie FROM question";
     $stmt_cat = $pdo->prepare($sql_cat);
     $stmt_cat->execute();
@@ -30,7 +30,7 @@
 ?>
 
 <?php
-include 'db.php';
+include '../models/db.php';
 // Récupération des paramètre
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $question = $_POST['question'];
@@ -70,7 +70,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             $stmt->execute();
             
             // Redirection vers une autre question, en conservant la catégorie
-            $redirect_url = 'question.php?pseudo=' . urlencode($pseudo) . '&id_joueur=' . urlencode($id_joueur);
+            $redirect_url = '../views/question.php?pseudo=' . urlencode($pseudo) . '&id_joueur=' . urlencode($id_joueur);
             if (!empty($categorie)) {
                 $redirect_url .= '&categorie=' . urlencode($categorie);
             }
@@ -87,7 +87,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 echo "<p>La bonne réponse était: " . htmlspecialchars($bonne_reponse) . "</p>";
             }
             // Lien vers la question suivante, en conservant la catégorie
-            $next_url = 'question.php?pseudo=' . urlencode($pseudo) . '&id_joueur=' . urlencode($id_joueur);
+            $next_url = '../views/question.php?pseudo=' . urlencode($pseudo) . '&id_joueur=' . urlencode($id_joueur);
             if (!empty($categorie)) {
                 $next_url .= '&categorie=' . urlencode($categorie);
             }

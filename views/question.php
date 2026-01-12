@@ -1,12 +1,12 @@
 <?php
-include 'db.php';
+include '../models/db.php';
 ?>
 <!DOCTYPE html>
 <html lang="fr">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="style.css"> <!-- Ensure the stylesheet is linked -->
+    <link rel="stylesheet" href="../public/style.css"> <!-- Ensure the stylesheet is linked -->
     <title>Question</title>
 </head>
 <body>
@@ -120,7 +120,7 @@ if ($questions_left > 0) {
         //formulaire pour chaque reponse
         //on envoie la question et la reponse dans le formulaire pour verif
         foreach ($answers as $answer) {
-            echo "<form method='post' action='verif.php?pseudo=" . urlencode($pseudo) . "&id_joueur=" . urlencode($id_joueur) . "&categorie=" . urlencode($categorie ?? '') . "' class='answer-form'>";
+            echo "<form method='post' action='../controllers/verif.php?pseudo=" . urlencode($pseudo) . "&id_joueur=" . urlencode($id_joueur) . "&categorie=" . urlencode($categorie ?? '') . "' class='answer-form'>";
             echo "<input type='hidden' name='question' value='" . htmlspecialchars($question['question']) . "'>";
             echo "<input type='hidden' name='answer' value='" . htmlspecialchars($answer) . "'>";
             echo "<button class='button_cat' type='submit'>" . htmlspecialchars($answer) . "</button>";
@@ -128,7 +128,7 @@ if ($questions_left > 0) {
         }
         //formulaire caché pour le timeout
         //est soumis automatiquement quand le temps est écoulé
-        echo "<form id='timeoutForm' method='post' style='display:none' action='verif.php?pseudo=" . urlencode($pseudo) . "&id_joueur=" . urlencode($id_joueur) . "&categorie=" . urlencode($categorie ?? '') . "'>";
+        echo "<form id='timeoutForm' method='post' style='display:none' action='../controllers/verif.php?pseudo=" . urlencode($pseudo) . "&id_joueur=" . urlencode($id_joueur) . "&categorie=" . urlencode($categorie ?? '') . "'>";
         echo "<input type='hidden' name='question' value='" . htmlspecialchars($question['question']) . "'>";
         echo "<input type='hidden' name='answer' value='__TIMEOUT__'>";
         echo "</form>";
